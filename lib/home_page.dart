@@ -131,12 +131,14 @@ class _HomePageState extends State<HomePage> {
                                                 Text(marketNews.source!,
                                                   style: TextStyle(
                                                       color: Colors.white,
+                                                    fontSize: 12.5,
                                                     fontWeight: FontWeight.w300
                                                   ),
                                                 ),
                                                 Text(formatUnixTimestamp(marketNews.datetime!),
                                                 style: TextStyle(
                                                   color: Colors.white,
+                                                    fontSize: 12.5,
                                                     fontWeight: FontWeight.w300
                                                 ),
                                                 )
