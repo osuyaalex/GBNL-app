@@ -6,6 +6,9 @@ import 'package:http/http.dart' as http;
 
 
 class BackendDb with ChangeNotifier{
+  final http.Client client;
+
+  BackendDb({http.Client? client}) : client = client ?? http.Client();
   List<MarketNews>? marketNewsList;
   String? error;
   Future<List<MarketNews>?> getMarketNews() async {
@@ -13,6 +16,7 @@ class BackendDb with ChangeNotifier{
     try {
       //I wanted to keep the url and token in an env but that would have interferred with the app if you want to run the code
       String url = "https://finnhub.io/api/v1/news?category=general&token=crals9pr01qhk4bqotb0crals9pr01qhk4bqotbg";
+      //replace http.get with client.get for unit testing
       final response = await http.get(
         Uri.parse(url),
         headers: {

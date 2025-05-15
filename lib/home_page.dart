@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? _firstName;
   String? _lastName;
+  String _placeholder = "https://static.vecteezy.com/system/resources/thumbnails/032/980/211/small_2x/new-item-rubber-grunge-stamp-seal-vector.jpg";
 
   Future _getName()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -113,7 +114,9 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Image.network(marketNews.image!,
+                                    Image.network(marketNews.image?.trim().isNotEmpty ?? false
+                                  ? marketNews.image!
+                                  : _placeholder,
                                       height: 28.pW,width: 28.pW,fit: BoxFit.fill,),
                                     1.gap,
                                     Expanded(
@@ -121,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                                         children: [
 
                                           Padding(
-                                            padding: const EdgeInsets.only(top: 15.0,bottom: 10, right: 18),
+                                            padding: const EdgeInsets.only(top: 15.0,bottom: 10, right: 25),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
